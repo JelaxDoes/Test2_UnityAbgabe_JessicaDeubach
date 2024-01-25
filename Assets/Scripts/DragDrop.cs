@@ -6,21 +6,28 @@ public class DragDrop : MonoBehaviour
 {
     private bool isBeingDragged = false;
     private Rigidbody rb;
-    private Renderer appleRenderer;
     private Camera mainCamera;
+    private AudioSource audioSource;
+    private GameManager GameManager;
 
-    private bool isWashed = false;
+    public bool IsWashed { get; private set; } = false;
 
     public Color washedColor = Color.red; // Farbe, wenn der Apfel gewaschen wurde
+    public AudioClip washSound; // Sound, wenn der Apfel gewaschen wird
+    public AudioClip placeInBasketSound; // Sound, wenn der Apfel im Korb platziert wird
+    public AudioClip notWashedSound; // Sound, wenn der Apfel nicht gewaschen wurde
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         rb.isKinematic = true;
+        GameManager = FindObjectOfType<GameManager>();
 
         mainCamera = Camera.main;
 
-        appleRenderer = GetComponent<Renderer>();
+        // Füge eine AudioSource-Komponente hinzu
+        audioSource = gameObject.AddComponent<AudioSource>();
+        audioSource.playOnAwake = false;
     }
 
     void OnMouseDown()
@@ -34,13 +41,26 @@ public class DragDrop : MonoBehaviour
         isBeingDragged = false;
         rb.isKinematic = true;
 
-        if (!isWashed)
+        if (!IsWashed)
         {
             Debug.Log("The apple needs to be washed before placing it in the basket.");
+
+            // Spiele den Sound ab, wenn der Apfel nicht gewaschen wurde
+            if (notWashedSound != null)
+            {
+                audioSource.clip = notWashedSound;
+                audioSource.Play();
+                GameManager.IncreaseScore(-1);
+
+            }
         }
         else
         {
-            Debug.Log("The apple is washed and can be placed in the basket.");
+            Debug.Log("Great!");
+           
+                audioSource.clip = placeInBasketSound;
+                audioSource.Play();
+                GameManager.IncreaseScore(10);
         }
     }
 
@@ -65,14 +85,17 @@ public class DragDrop : MonoBehaviour
     {
         if (other.CompareTag("Basket"))
         {
-            if (isWashed)
+            if (IsWashed)
             {
                 Debug.Log("Apple placed in the basket!");
-                Destroy(gameObject); // Hier könntest du das GameObject deaktivieren oder zerstören
+
+                
             }
             else
             {
                 Debug.Log("The apple needs to be washed before placing it in the basket.");
+
+                
             }
         }
         else if (other.CompareTag("WaterBasin"))
@@ -84,8 +107,25 @@ public class DragDrop : MonoBehaviour
 
     void WashApple()
     {
-        isWashed = true;
-        appleRenderer.material.color = washedColor;
+        IsWashed = true;
+
+        // Hier wird das Material direkt am MeshFilter des Child-Objekts aktualisiert
+        MeshFilter childMeshFilter = GetComponentInChildren<MeshFilter>();
+        if (childMeshFilter != null && childMeshFilter.sharedMesh != null)
+        {
+            Material material = childMeshFilter.GetComponent<Renderer>().material;
+            material.color = washedColor;
+            childMeshFilter.GetComponent<Renderer>().material = material;
+        }
+
         Debug.Log("The apple is now washed and has changed color!");
+
+        // Spiele den Sound ab, wenn der Apfel gewaschen wird
+        if (washSound != null)
+        {
+            audioSource.clip = washSound;
+            audioSource.Play();
+        }
     }
 }
+

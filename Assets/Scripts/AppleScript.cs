@@ -27,7 +27,6 @@ public class AppleScript : MonoBehaviour
         }
     }
 
-   
     }
 
    

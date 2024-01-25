@@ -3,7 +3,11 @@ guid: a6cc599907bdba44696cad6534b45dea
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - washSound: {fileID: 8300000, guid: 26bb36ca1f7166b4da9094d5cd19da0a, type: 3}
+  - placeInBasketSound: {fileID: 8300000, guid: 8aefdba9397d4464d8f01b42438b3018,
+      type: 3}
+  - notWashedSound: {fileID: 8300000, guid: 5103891a989fe4c47b6778fa5877b6ca, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
