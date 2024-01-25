@@ -2,11 +2,11 @@
 
 
 
-## Infos wie ich Ding vllt ander gelöst habe oder garnicht:
-
-
+## Wenn ich die Scene lade:
 
 ![Bild1](bild1.png)
+
+![Bild2](bild2.png)
 
 
 
