@@ -12,6 +12,8 @@
 ### Der Korb nimmt leider auch dreckige Äpfel auf aber die geben Minuspunkte und einen Falsch Sound
 ### Das mit den Listen hab ich nicht hinbekommen
 
+![Bild1](bild1.png)
+
 
 
 
