@@ -6,6 +6,8 @@
 
 ![Bild1](bild1.png)
 
+## Score erhöht sich
+
 ![Bild2](bild2.png)
 
 
