@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TreeScript : MonoBehaviour
 {
+
     public int numberOfVisibleApples = 5; // Anzahl der sichtbaren Äpfel
 
     void Start()
@@ -13,17 +14,35 @@ public class TreeScript : MonoBehaviour
 
     void ActivateRandomApples()
     {
-        // Durchlaufe alle Kinder des Baumes
-        foreach (Transform child in transform)
-        {
-            // Überprüfe, ob das Kind ein Apfel ist
-            if (child.CompareTag("Apple"))
-            {
-                // Aktiviere zufällige Anzahl von Äpfeln
-                child.gameObject.SetActive(Random.Range(0, 100) < numberOfVisibleApples);
+        // Finde alle Äpfel im Spiel
+        GameObject[] allApples = GameObject.FindGameObjectsWithTag("Apple");
 
-                // Wenn aktiviert, wird die Farbe im Apple-Skript festgelegt
+        // Aktiviere zufällige Anzahl von Äpfeln
+        int visibleApplesCount = 0;
+        foreach (GameObject apple in allApples)
+        {
+            MeshRenderer meshRenderer = apple.GetComponentInChildren<MeshRenderer>();
+
+            if (visibleApplesCount < numberOfVisibleApples && Random.Range(0f, 1f) < 0.5f)
+            {
+                apple.SetActive(true);
+                SetRandomColor(meshRenderer);
+                visibleApplesCount++;
             }
+            else
+            {
+                apple.SetActive(false);
+            }
+        }
+    }
+
+    void SetRandomColor(MeshRenderer meshRenderer)
+    {
+        if (meshRenderer != null)
+        {
+            Material material = new Material(meshRenderer.sharedMaterial);
+            material.color = Random.ColorHSV(); // Setze zufällige Farbe
+            meshRenderer.material = material;
         }
     }
 }

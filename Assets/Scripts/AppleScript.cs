@@ -4,17 +4,32 @@ using UnityEngine;
 
 public class AppleScript : MonoBehaviour
 {
+   
+
     void Start()
     {
-        SetRandomColor();
+        if (gameObject.activeSelf)
+        {
+            SetRandomColor();
+          
+        }
     }
 
     void SetRandomColor()
     {
-        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
-        if (spriteRenderer != null)
+        MeshRenderer meshRenderer = GetComponentInChildren<MeshRenderer>();
+
+        if (meshRenderer != null)
         {
-            spriteRenderer.color = Random.ColorHSV(); // Set random color
+            Material material = new Material(meshRenderer.sharedMaterial);
+            material.color = Random.ColorHSV();
+            meshRenderer.material = material;
         }
     }
-}
+
+   
+    }
+
+   
+
+

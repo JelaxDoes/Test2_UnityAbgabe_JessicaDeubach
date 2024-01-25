@@ -10,9 +10,12 @@ GameObject:
   m_Component:
   - component: {fileID: 921401517190968448}
   - component: {fileID: 7163765450846508121}
+  - component: {fileID: 2083114830247606270}
+  - component: {fileID: 109619159217921073}
+  - component: {fileID: 8707978242348432037}
   m_Layer: 0
   m_Name: Apple
-  m_TagString: Untagged
+  m_TagString: Apple
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 4585360498037621960}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.5799582, y: 20.524952, z: 18.279814}
+  m_LocalPosition: {x: -2.5799582, y: 20.524952, z: 17.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -45,6 +48,66 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24af1d70ee2599b43be0add90b78c5dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2083114830247606270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4585360498037621960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6cc599907bdba44696cad6534b45dea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!54 &109619159217921073
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4585360498037621960}
+  serializedVersion: 4
+  m_Mass: 0.0000001
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &8707978242348432037
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4585360498037621960}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 3.2649775, y: 3.3514538, z: 3.2473507}
+  m_Center: {x: 2.5506563, y: 3.4852228, z: -13.117118}
 --- !u!1001 &2821650109507634218
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -107,6 +170,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Apple_Final
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7176ddf48cbda484fa666cd99ef8e4fa,
+        type: 3}
+      propertyPath: m_TagString
+      value: Apple
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
